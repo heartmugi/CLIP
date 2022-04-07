@@ -229,3 +229,11 @@ def tokenize(texts: Union[str, List[str]], context_length: int = 77, truncate: b
         result[i, :len(tokens)] = torch.tensor(tokens)
 
     return result
+
+def tokenize_reverse(ids: Union[int, List[int]]) -> torch.LongTensor:
+    if isinstance(ids, str):
+       ids = [ids]
+
+    result = [_tokenizer.decode(text)for id in ids]
+
+    return result
